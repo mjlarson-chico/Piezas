@@ -92,7 +92,6 @@ Piece Piezas::dropPiece(int column)
             }
             else
                 i++;
-            
         }
     }    
     
@@ -195,7 +194,7 @@ Piece Piezas::gameState()
     //Return winner or Blank if tied.
     if( longestO == longestX )
         return Blank;
-    else if( longestO > longestO)
+    else if( longestO > longestX)
         return O;
     else
         return X;
