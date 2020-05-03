@@ -21,6 +21,8 @@ TEST(PiezasTest, sanityCheck)
 
 TEST(PiezasTest, resetBoard)
 {
+	std::vector < std::vector<Piece> > board;
+	
 	for( auto &it : board )
     {
         for( unsigned i = 0; i < it.size(); i++ )
