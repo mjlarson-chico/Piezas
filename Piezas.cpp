@@ -146,14 +146,19 @@ Piece Piezas::gameState()
             start = board[i][j];
             count = 0;
 
-            if( board[i][j] != start )
-                break;
+            unsigned k = j;
 
-            count++;
-            if( start == X )
-                longestX = std::max( count, longestX );
-            else
-                longestO = std::max( count, longestO );            
+            while ( board[i][k] == start  )
+            {
+                count++;
+                
+                if( start == X )
+                    longestX = std::max( count, longestX );
+                else
+                    longestO = std::max( count, longestO );
+
+                k++;
+            }            
         }
     }
 
@@ -165,14 +170,19 @@ Piece Piezas::gameState()
             start = board[i][j];
             count = 0;
 
-            if( board[i][j] != start )
-                break;
+            unsigned k = i;
 
-            count++;
-            if( start == X )
-                longestX = std::max( count, longestX );
-            else
-                longestO = std::max( count, longestO );  
+            while ( board[k][j] == start  )
+            {
+                count++;
+                
+                if( start == X )
+                    longestX = std::max( count, longestX );
+                else
+                    longestO = std::max( count, longestO );
+
+                k++;
+            } 
         }
     }
 
