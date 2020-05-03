@@ -1,5 +1,6 @@
 #include "Piezas.h"
 #include <vector>
+#include <algorithm>
 /** CLASS Piezas
  * Class for representing a Piezas vertical board, which is roughly based
  * on the game "Connect Four" where pieces are placed in a column and 
@@ -22,6 +23,24 @@
 **/
 Piezas::Piezas()
 {
+    //Sets first turn to X
+    turn = X;
+    
+    //Size board according to CONST variables
+    board.resize( BOARD_ROWS );
+    for( auto &it : board )
+    {
+        it.resize( BOARD_COLS );
+    }
+
+    //Fill board with Blanks
+    for( auto &it : board )
+    {
+        for( unsigned i = 0; i < it.size(); i++ )
+        {
+            it[i] = Blank;
+        }
+    }
 }
 
 /**
@@ -30,6 +49,14 @@ Piezas::Piezas()
 **/
 void Piezas::reset()
 {
+    //Resets board to all Blank
+    for( auto &it : board )
+    {
+        for( unsigned i = 0; i < it.size(); i++ )
+        {
+            it[i] = Blank;
+        }
+    }
 }
 
 /**
@@ -42,7 +69,34 @@ void Piezas::reset()
 **/ 
 Piece Piezas::dropPiece(int column)
 {
-    return Blank;
+    //Default value, if Peice is inbounds and column is full
+    //Temp is set to Invalid if out of bounds, or peice placed if possible
+    Piece temp = Blank;
+    
+    // Check for out of bounds
+    if( column >= BOARD_COLS || column < 0 )
+        temp = Invalid;
+
+    // Not out of bounds, check for first Blank spot, fill if available
+    else
+    {    
+        for( unsigned i = 0; i <= column; i++ )
+        {
+            if( board[i][column] == Blank )
+            {
+                board[i][column] = turn;
+                temp = board[i][column];
+            }
+        }
+    }
+    
+    // Toogle turn
+    if( turn == X )
+        turn = O;
+    else
+        turn = X;    
+    
+    return temp;
 }
 
 /**
@@ -51,7 +105,10 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
-    return Blank;
+    if( row >= BOARD_ROWS || row < 0 || column >= BOARD_COLS || column < 0)
+        return Invalid;
+
+    return board[row][column];
 }
 
 /**
@@ -65,5 +122,69 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
-    return Blank;
+    unsigned longestX = 0;
+    unsigned longestO = 0;
+    unsigned count = 0;
+
+    Piece start;
+    
+    //Checks if board is full, returns Invalid if not full
+    for( unsigned i = 0; i < BOARD_ROWS; i++ )
+    {
+        for( unsigned j = 0; j < BOARD_COLS; i++ )
+        {
+            if( board[i][j] == Blank)
+                return Invalid;
+        }
+    }
+
+    //Checks for longest adjacent peices vertically
+    for( unsigned i = 0; i < BOARD_ROWS; i++ )
+    {
+        for( unsigned j = 0; j < BOARD_COLS; j++ )
+        {
+            start = board[i][j];
+            count = 0;
+
+            if( board[i][j] != start )
+            {
+                count = 0;
+                break;
+            }
+            count++;
+            if( start = X )
+                longestX = std::max( count, longestX );
+            else
+                longestO = std::max( count, longestO );            
+        }
+    }
+
+    //Checks for longest adjacent peices horizontally
+    for( unsigned j = 0; j < BOARD_COLS; j++ )
+    {
+        for( unsigned i = 0; i < BOARD_ROWS; i++ )
+        {
+            start = board[i][j];
+            count = 0;
+
+            if( board[i][j] != start )
+            {
+                count = 0;
+                break;
+            }
+            count++;
+            if( start = X )
+                longestX = std::max( count, longestX );
+            else
+                longestO = std::max( count, longestO );  
+        }
+    }
+
+    //Return winner or Blank if tied.
+    if( longestO == longestX )
+        return Blank;
+    else if( longestO > longestO)
+        return O;
+    else
+        return X;
 }

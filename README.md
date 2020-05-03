@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/mjlarson-chico/Piezas/badge.svg?branch=master)](https://coveralls.io/github/mjlarson-chico/Piezas?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/mjlarson-chico/Piezas/badge.svg?branch=master)](https://coveralls.io/github/mjlarson-chico/Piezas?branch=master)
 # Piezas
 
 ## Associated Enumerated Types
