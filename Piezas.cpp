@@ -138,7 +138,7 @@ Piece Piezas::gameState()
         }
     }
 
-    //Checks for longest adjacent peices vertically
+    //Checks for longest adjacent peices horizontally
     for( unsigned i = 0; i < BOARD_ROWS; i++ )
     {
         for( unsigned j = 0; j < BOARD_COLS; j++ )
@@ -159,7 +159,7 @@ Piece Piezas::gameState()
         }
     }
 
-    //Checks for longest adjacent peices horizontally
+    //Checks for longest adjacent peices vertically
     for( unsigned j = 0; j < BOARD_COLS; j++ )
     {
         for( unsigned i = 0; i < BOARD_ROWS; i++ )

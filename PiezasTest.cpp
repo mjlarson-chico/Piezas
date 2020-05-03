@@ -96,13 +96,12 @@ TEST(PiezasTest, gamestate_tied)
 {
 	Piezas test;
 
-	for( unsigned i = 0; i < BOARD_COLS; i++)
+	for( unsigned i = 0; i < BOARD_ROWS; i++ )
 	{
-		for( unsigned j = 0; j < BOARD_ROWS; j++ )
+		for( unsigned j = 0; j < BOARD_COLS; j++ )
 		{
-			test.dropPiece(i);
+			test.dropPiece(j);
 		}
 	}
-
 	ASSERT_EQ(test.gameState(), Blank);
 }
