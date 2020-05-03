@@ -72,7 +72,9 @@ Piece Piezas::dropPiece(int column)
     //Default value, if Peice is inbounds and column is full
     //Temp is set to Invalid if out of bounds, or peice placed if possible
     Piece temp = Blank;
-    
+    bool dropped = false;
+    unsigned i = 0;
+
     // Check for out of bounds
     if( column >= BOARD_COLS || column < 0 )
         temp = Invalid;
@@ -80,13 +82,17 @@ Piece Piezas::dropPiece(int column)
     // Not out of bounds, check for first Blank spot, fill if available
     else
     {    
-        for( unsigned i = 0; i < BOARD_ROWS; i++ )
+        while ( i < BOARD_ROWS && !dropped )
         {
             if( board[i][column] == Blank )
             {
                 board[i][column] = turn;
                 temp = board[i][column];
+                dropped = true;
             }
+            else
+                i++;
+            
         }
     }    
     
