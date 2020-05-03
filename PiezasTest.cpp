@@ -105,3 +105,33 @@ TEST(PiezasTest, gamestate_tied)
 	}
 	ASSERT_EQ(test.gameState(), Blank);
 }
+
+TEST(PiezasTest, gamestate_winner_O)
+{
+	Piezas test;
+
+	for( unsigned i = 0; i < BOARD_ROWS; i++ )
+	{
+		for( unsigned j = 0; j < BOARD_COLS; j++ )
+		{
+			test.dropPiece(-1);
+			test.dropPiece(j);
+		}
+	}
+	ASSERT_EQ(test.gameState(), Blank);
+}
+
+TEST(PiezasTest, gamestate_winner_X)
+{
+	Piezas test;
+
+	for( unsigned i = 0; i < BOARD_ROWS; i++ )
+	{
+		for( unsigned j = 0; j < BOARD_COLS; j++ )
+		{
+			test.dropPiece(j);
+			test.dropPiece(-1);
+		}
+	}
+	ASSERT_EQ(test.gameState(), Blank);
+}
