@@ -80,7 +80,7 @@ Piece Piezas::dropPiece(int column)
     // Not out of bounds, check for first Blank spot, fill if available
     else
     {    
-        for( unsigned i = 0; i <= column; i++ )
+        for( unsigned i = 0; i < BOARD_ROWS; i++ )
         {
             if( board[i][column] == Blank )
             {
@@ -152,7 +152,7 @@ Piece Piezas::gameState()
                 break;
             }
             count++;
-            if( start = X )
+            if( start == X )
                 longestX = std::max( count, longestX );
             else
                 longestO = std::max( count, longestO );            
@@ -173,7 +173,7 @@ Piece Piezas::gameState()
                 break;
             }
             count++;
-            if( start = X )
+            if( start == X )
                 longestX = std::max( count, longestX );
             else
                 longestO = std::max( count, longestO );  
