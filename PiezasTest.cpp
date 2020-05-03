@@ -21,17 +21,11 @@ TEST(PiezasTest, sanityCheck)
 
 TEST(PiezasTest, resetBoard)
 {
-	std::vector < std::vector<Piece> > board;
-	
-	for( auto &it : board )
-    {
-        for( unsigned i = 0; i < it.size(); i++ )
-        {
-            it[i] = X;
-        }
-    }
+	Piezas test;
 
-	board.reset();
+	test.dropPiece(2);
 
-	ASSERT_EQ(board[2][2], Blank);
+	test.reset();
+
+	ASSERT_EQ(test.pieceAt(0,2), Blank);
 }
