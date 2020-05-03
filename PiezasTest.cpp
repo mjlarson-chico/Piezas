@@ -18,3 +18,18 @@ TEST(PiezasTest, sanityCheck)
 {
 	ASSERT_TRUE(true);
 }
+
+TEST(PiezasTest, resetBoard)
+{
+	for( auto &it : board )
+    {
+        for( unsigned i = 0; i < it.size(); i++ )
+        {
+            it[i] = X;
+        }
+    }
+
+	board.reset();
+
+	ASSERT_EQ(board[2][2], Blank);
+}
