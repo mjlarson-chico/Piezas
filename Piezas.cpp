@@ -88,13 +88,13 @@ Piece Piezas::dropPiece(int column)
                 temp = board[i][column];
             }
         }
-    }
+    }    
     
     // Toogle turn
     if( turn == X )
         turn = O;
     else
-        turn = X;    
+        turn = X;  
     
     return temp;
 }
@@ -147,10 +147,8 @@ Piece Piezas::gameState()
             count = 0;
 
             if( board[i][j] != start )
-            {
-                count = 0;
                 break;
-            }
+
             count++;
             if( start == X )
                 longestX = std::max( count, longestX );
@@ -168,10 +166,8 @@ Piece Piezas::gameState()
             count = 0;
 
             if( board[i][j] != start )
-            {
-                count = 0;
                 break;
-            }
+
             count++;
             if( start == X )
                 longestX = std::max( count, longestX );

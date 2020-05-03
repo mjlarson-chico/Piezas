@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/mjlarson-chico/Piezas/badge.svg?branch=master)](https://coveralls.io/github/mjlarson-chico/Piezas?branch=master)
+[![Build Status](https://travis-ci.org/mjlarson-chico/Piezas.svg?branch=master)](https://travis-ci.org/mjlarson-chico/Piezas)
 [![Coverage Status](https://coveralls.io/repos/github/mjlarson-chico/Piezas/badge.svg?branch=master)](https://coveralls.io/github/mjlarson-chico/Piezas?branch=master)
 # Piezas
 
