@@ -131,7 +131,7 @@ Piece Piezas::gameState()
     //Checks if board is full, returns Invalid if not full
     for( unsigned i = 0; i < BOARD_ROWS; i++ )
     {
-        for( unsigned j = 0; j < BOARD_COLS; i++ )
+        for( unsigned j = 0; j < BOARD_COLS; j++ )
         {
             if( board[i][j] == Blank)
                 return Invalid;
