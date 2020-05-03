@@ -148,7 +148,7 @@ Piece Piezas::gameState()
 
             unsigned k = j;
 
-            while ( board[i][k] == start  )
+            while ( board[i][k] == start && k < BOARD_COLS )
             {
                 count++;
                 
@@ -172,7 +172,7 @@ Piece Piezas::gameState()
 
             unsigned k = i;
 
-            while ( board[k][j] == start  )
+            while ( board[k][j] == start && k < BOARD_ROWS )
             {
                 count++;
                 
