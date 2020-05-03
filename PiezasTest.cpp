@@ -19,10 +19,17 @@ TEST(PiezasTest, sanityCheck)
 	ASSERT_TRUE(true);
 }
 
-TEST(PiezasTest, drop_correct_peice)
+TEST(PiezasTest, drop_correct_peiceX)
 {
 	Piezas test;
 	ASSERT_EQ(test.dropPiece(3), X);
+}
+
+TEST(PiezasTest, drop_correct_peiceO)
+{
+	Piezas test;
+	test.dropPiece(1);
+	ASSERT_EQ(test.dropPiece(3), O);
 }
 
 TEST(PiezasTest, drop_out_of_bounds)
@@ -40,11 +47,19 @@ TEST(PiezasTest, drop_full_col)
 	ASSERT_EQ(test.dropPiece(0), Blank);
 }
 
-TEST(PiezasTest, peice_at_correct)
+TEST(PiezasTest, peice_at_correctX)
 {
 	Piezas test;
 	test.dropPiece(1);
 	ASSERT_EQ(test.pieceAt(0,1), X);
+}
+
+TEST(PiezasTest, peice_at_correctO)
+{
+	Piezas test;
+	test.dropPiece(1);
+	test.dropPiece(2);
+	ASSERT_EQ(test.pieceAt(0,2), O);
 }
 
 TEST(PiezasTest, peice_at_out_of_bounds_row)
@@ -68,4 +83,40 @@ TEST(PiezasTest, resetBoard)
 	test.reset();
 
 	ASSERT_EQ(test.pieceAt(0,2), Blank);
+}
+
+TEST(PiezasTest, gamestate_not_over)
+{
+	Piezas test;
+	test.dropPiece(2);
+	ASSERT_EQ(test.gameState(), Invalid);
+}
+
+TEST(PiezasTest, gamestate_tied)
+{
+	Piezas test;
+
+	for( unsigned i = 0; i < BOARD_COLS; i++)
+	{
+		for( unsigned j = 0; j < BOARD_ROWS; j++ )
+		{
+			test.dropPiece(i);
+		}
+	}
+
+	ASSERT_EQ(test.gameState(), Blank);
+}
+
+TEST(PiezasTest, gamestate_tied)
+{
+	Piezas test;
+
+	for( unsigned i = 0; i < BOARD_COLS; i++)
+	{
+		for( unsigned j = 0; j < BOARD_ROWS; j++ )
+		{
+			test.dropPiece(i);
+		}
+	}
+	ASSERT_EQ(test.gameState(), Blank);
 }
