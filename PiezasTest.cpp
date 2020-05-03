@@ -19,6 +19,46 @@ TEST(PiezasTest, sanityCheck)
 	ASSERT_TRUE(true);
 }
 
+TEST(PiezasTest, drop_correct_peice)
+{
+	Piezas test;
+	ASSERT_EQ(test.dropPiece(3), X);
+}
+
+TEST(PiezasTest, drop_out_of_bounds)
+{
+	Piezas test;
+	ASSERT_EQ(test.dropPiece(-1), Invalid);
+}
+
+TEST(PiezasTest, drop_full_col)
+{
+	Piezas test;
+	test.dropPiece(0);
+	test.dropPiece(0);
+	test.dropPiece(0);
+	ASSERT_EQ(test.dropPiece(0), Blank);
+}
+
+TEST(PiezasTest, peice_at_correct)
+{
+	Piezas test;
+	test.dropPiece(1);
+	ASSERT_EQ(test.pieceAt(0,1), X);
+}
+
+TEST(PiezasTest, peice_at_out_of_bounds_row)
+{
+	Piezas test;
+	ASSERT_EQ(test.pieceAt(-1,1), Invalid);
+}
+
+TEST(PiezasTest, peice_at_out_of_bounds_col)
+{
+	Piezas test;
+	ASSERT_EQ(test.pieceAt(1,-1), Invalid);
+}
+
 TEST(PiezasTest, resetBoard)
 {
 	Piezas test;
