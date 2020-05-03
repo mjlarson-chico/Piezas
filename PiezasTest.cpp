@@ -98,7 +98,7 @@ TEST(PiezasTest, gamestate_tied)
 
 	for( unsigned i = 0; i < BOARD_ROWS; i++ )
 	{
-		for( unsigned j = 0; j < BOARD_COLS; j++ )
+		for( int j = 0; j < BOARD_COLS; j++ )
 		{
 			test.dropPiece(j);
 		}
